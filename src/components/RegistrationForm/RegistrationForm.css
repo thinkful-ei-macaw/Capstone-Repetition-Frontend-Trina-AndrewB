@@ -35,8 +35,11 @@ button {
   margin: 20px;
   padding: 15px 30px;
   font-size: 20px;
+  font-family: "Ubuntu", sans-serif;
   border-radius: 25%;
   background-color:   #FD9404;
+  cursor: pointer;
+  transition-duration: 0.5s;
 }
 
 footer {

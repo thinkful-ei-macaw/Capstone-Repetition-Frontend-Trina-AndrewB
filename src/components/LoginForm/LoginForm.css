@@ -4,14 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    text-align: center;
-    background-color: #fd9404;
-    color: #700a97;
-}
-
-
-
 h2 {
     margin: 50px;
 }
@@ -26,21 +18,5 @@ input {
     margin: 15px;
     padding: 5px;
     font-size: 15px;
-    background-color: #700a97;
-    color: #FE5803;
     font-family: "Ubuntu", sans-serif;
 }
-
-button {
-    margin: 50px;
-    font-size: 20px;
-    font-family: "Ubuntu", sans-serif;
-    padding: 15px 30px;
-    border-radius: 45%;
-    background-color: #700a97;
-    color: #FE5803;
-    cursor: pointer;
-    transition-duration: 0.5s;
-}
-
-

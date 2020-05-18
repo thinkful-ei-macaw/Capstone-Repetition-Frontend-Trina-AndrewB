@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+nav {
+    margin: 25px;
+    text-align: left;
+    font-weight: bold;
+}
+
+nav a {
+    padding: 10px;
+}
+

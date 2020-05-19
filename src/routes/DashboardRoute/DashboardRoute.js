@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import config from '../../config'
 import TokenService from '../../services/token-service'
+import './DashboardRoute.css'
 
 class DashboardRoute extends Component {
 
@@ -34,11 +35,39 @@ class DashboardRoute extends Component {
 
   }
 
+  renderWordList() {
+    const words = this.state.words;
+    const wordsList = words.map((word, index) =>
+      <tr key={index}>
+       
+            <td>{word.original}</td>
+            <td>{word.correct_count}</td>
+            <td>{word.incorrect_count}</td>
+      </tr>
+    )
+    return (
+      <table className="dashboard">
+        {wordsList}
+      </table>
+    )
+  }
+
   render() {
     return (
-      <section>
-        implement and style me
-      </section>
+    <div className="Dashboard">
+      <h1>DUTCH</h1>
+      <button type='button'>START PRACTICING</button>
+      <table>
+        <tr>
+          <th>Words to Practice</th>
+          <th>Correct</th>
+          <th>Incorrect</th>
+        </tr>
+       
+             
+      </table>
+      {this.renderWordList()}
+     </div>
 
     );
   }

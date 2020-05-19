@@ -7,7 +7,8 @@ import Context from '../../Context'
 class DashboardRoute extends Component {
 
   state = {
-    words: []
+    words: [],
+    language: {}
   }
 
   componentDidMount() {
@@ -27,6 +28,7 @@ class DashboardRoute extends Component {
       console.log(items)
       this.setState({
         words: items.words,
+        language: items.language
       })
     })
 
@@ -39,36 +41,36 @@ class DashboardRoute extends Component {
   renderWordList() {
     const words = this.state.words;
     const wordsList = words.map((word, index) =>
-      <tr key={index}>
-            <td>{word.original}</td>
-            <td>{word.correct_count}</td>
-            <td>{word.incorrect_count}</td>
-      </tr>
+      <li key={index}>
+        <h4>{word.original}</h4>
+        <p>correct answer count: {word.correct_count}</p>
+        <p>incorrect answer count: {word.incorrect_count}</p>  
+      </li>
     )
     return (
-      <table className="dashboard">
-        <tbody>{wordsList}</tbody>
-      </table>
+      <div className="dashboard">
+        <li>{wordsList}</li>
+      </div>
     )
   }
 
   render() {
-    const value = { words: this.state.words }
+    const value = { words: this.state.words, language: this.state.language }
+    console.log(value)
     return (
       <Context.Provider value={value}>
         <div className="Dashboard">
-          <h1>DUTCH</h1>
-          <button type='submit' onClick={this.handleClickButton}>START PRACTICING</button>
-          <table>
-            <tbody>
-              <tr>
-                <th>Words to Practice</th>
-                <th>Correct</th>
-                <th>Incorrect</th>
-              </tr>
-            </tbody>
-          </table>
-          {this.renderWordList()}
+          <main>
+          <h2>{value.language.name}</h2>
+            <section>
+            <a type='submit' href="/learn" className="practice">Start practicing</a>
+            
+                  <h3>Words to practice</h3>
+                  <p>Total correct answers: {value.language.total_score}</p>
+                
+            {this.renderWordList()}
+            </section>
+          </main>
         </div>
      </Context.Provider>
 

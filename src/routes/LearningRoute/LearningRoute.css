@@ -1,0 +1,54 @@
+
+.nextword {
+    font-size: 50px;
+}
+
+form {
+    padding: 20px;
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    margin: 0;
+}
+
+label {
+    position: relative;
+    bottom: 25px;
+    margin-top: 15px;
+    width: 0px;
+    font-size: 15px;
+}
+
+input {
+    margin: 0px 50px 0px 0px;
+}
+
+button {
+    display: inline;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6.5rem;
+}
+
+.answered {
+    float: left;
+    text-align: left;
+}
+
+.correct, .incorrect {
+    margin: 10px;
+}
+
+.score {
+    float: right;
+    text-align: right;
+    width: 25%;
+}

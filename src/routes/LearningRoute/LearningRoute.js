@@ -29,6 +29,8 @@ class LearningRoute extends Component {
     })
     .then(head => {
       console.log(head)
+      console.log(this.context)
+      //this.context.setLanguage(head)
     })
   }
 

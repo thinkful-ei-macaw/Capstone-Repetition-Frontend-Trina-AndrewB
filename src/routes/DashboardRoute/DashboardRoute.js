@@ -6,10 +6,11 @@ import Context from '../../Context'
 
 class DashboardRoute extends Component {
 
-  state = {
-    words: [],
-    language: {}
-  }
+  static contextType = Context
+  // state = {
+  //   words: [],
+  //   language: {}
+  // }
 
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}/language`, {
@@ -25,11 +26,10 @@ class DashboardRoute extends Component {
       return res.json()
     })
     .then(items => {
-      console.log(items)
-      this.setState({
-        words: items.words,
-        language: items.language
-      })
+      console.log('Fetched data:', items)
+      this.context.setWords({words: items.words})
+      this.context.setLanguage({language: items.language})
+      console.log('context:', this.context)
     })
 
   }
@@ -39,7 +39,8 @@ class DashboardRoute extends Component {
   }
 
   renderWordList() {
-    const words = this.state.words;
+    const words = this.context.words;
+    console.log('words:', words)
     const wordsList = words.map((word, index) =>
       <li key={index}>
         <h4>{word.original}</h4>
@@ -47,18 +48,17 @@ class DashboardRoute extends Component {
         <p>incorrect answer count: {word.incorrect_count}</p>  
       </li>
     )
+    console.log('wordList:', wordsList)
     return (
       <div className="dashboard">
-        <li>{wordsList}</li>
+        <ul>{wordsList}</ul>
       </div>
     )
   }
 
   render() {
-    const value = { words: this.state.words, language: this.state.language }
-    console.log(value)
+    const value = { words: this.context.words, language: this.context.language }
     return (
-      <Context.Provider value={value}>
         <div className="Dashboard">
           <main>
           <h2>{value.language.name}</h2>
@@ -70,8 +70,6 @@ class DashboardRoute extends Component {
             {this.renderWordList()}
           </main>
         </div>
-     </Context.Provider>
-
     );
   }
 }

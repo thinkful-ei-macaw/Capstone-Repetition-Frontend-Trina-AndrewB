@@ -9,6 +9,7 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import LearningRoute from '../../routes/LearningRoute/LearningRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
+import { ContextProvider } from '../../Context'
 
 export default class App extends Component {
   state = { hasError: false }
@@ -21,6 +22,7 @@ export default class App extends Component {
   render() {
     const { hasError } = this.state
     return (
+      <ContextProvider>
       <div className='App'>
         <Header />
         <main>
@@ -51,6 +53,7 @@ export default class App extends Component {
           </Switch>
         </main>
       </div>
+      </ContextProvider>
     );
   }
 }

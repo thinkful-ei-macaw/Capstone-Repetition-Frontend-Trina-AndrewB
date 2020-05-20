@@ -63,13 +63,11 @@ class DashboardRoute extends Component {
           <main>
           <h2>{value.language.name}</h2>
             <section>
-            <a type='submit' href="/learn" className="practice">Start practicing</a>
-            
-                  <h3>Words to practice</h3>
-                  <p>Total correct answers: {value.language.total_score}</p>
-                
-            {this.renderWordList()}
+              <a type='submit' href="/learn" className="practice">Start practicing</a>
             </section>
+            <h3>Words to practice</h3>
+            <h3>Total correct answers: {value.language.total_score}</h3>
+            {this.renderWordList()}
           </main>
         </div>
      </Context.Provider>

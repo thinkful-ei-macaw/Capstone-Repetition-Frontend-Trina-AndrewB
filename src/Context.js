@@ -15,28 +15,52 @@ export class ContextProvider extends Component {
         language: {},
         head: {},
         setWords: ()=>{},
-        setLanguage: ()=>{}
+        setLanguage: ()=>{},
+        setHead: ()=>{}
+    }
+
+    getWordsAndLanguage()  {
+      fetch(`${config.API_ENDPOINT}/language`, {
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${TokenService.getAuthToken()}`
+        },
+      })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e))
+        }
+        return res.json()
+      })
+      .then(items => {
+        this.setState({
+          words: items.words,
+          language: items.language
+        })
+      })
+    }
+
+    getHead() {
+      fetch(`${config.API_ENDPOINT}/language/head`, {
+        headers: {
+          "Content-Type": "application/json", 
+          "Authorization": `Bearer ${TokenService.getAuthToken()}`
+        },
+      })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e))
+        }
+        return res.json()
+      })
+      .then(head => {
+        this.setState({head: head})
+      })
     }
 
     componentDidMount() {
-        fetch(`${config.API_ENDPOINT}/language`, {
-          headers: {
-            "Content-Type": "application/json",
-            'Authorization': `Bearer ${TokenService.getAuthToken()}`
-          },
-        })
-        .then(res => {
-          if (!res.ok) {
-            return res.json().then(e => Promise.reject(e))
-          }
-          return res.json()
-        })
-        .then(items => {
-          this.setState({
-            words: items.words,
-            language: items.language
-          })
-        })   
+      this.getWordsAndLanguage();
+      this.getHead();
       }
 
     setWords = words => {
@@ -55,8 +79,10 @@ export class ContextProvider extends Component {
         const value = {
             words: this.state.words,
             language: this.state.language,
+            head: this.state.head,
             setWords: this.setWords,
-            setLanguage: this.setLanguage
+            setLanguage: this.setLanguage,
+            setHead: this.setHead
         }
         
         return (

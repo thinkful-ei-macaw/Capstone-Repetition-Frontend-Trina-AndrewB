@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import config from '../../config'
+
 import Context from '../../Context'
 import './LearningRoute.css'
-import TokenService from '../../services/token-service'
+//import config from '../../config'
+//import TokenService from '../../services/token-service'
 
 
 class LearningRoute extends Component {
@@ -18,26 +19,28 @@ class LearningRoute extends Component {
 
   handleSubmitBtn = e => {
 
-
   }
 
-  componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/language/head`, {
-      headers: {
-        "Content-Type": "application/json", 
-        "Authorization": `Bearer ${TokenService.getAuthToken()}`
-      },
-    })
-    .then(res => {
-      if (!res.ok) {
-        return res.json().then(e => Promise.reject(e))
-      }
-      return res.json()
-    })
-    .then(head => {
-      console.log('head:', head)
-    })
-  }
+  // *** Moved fetch into context... is it needed here? **** 
+
+  // componentDidMount() {
+  //   fetch(`${config.API_ENDPOINT}/language/head`, {
+  //     headers: {
+  //       "Content-Type": "application/json", 
+  //       "Authorization": `Bearer ${TokenService.getAuthToken()}`
+  //     },
+  //   })
+  //   .then(res => {
+  //     if (!res.ok) {
+  //       return res.json().then(e => Promise.reject(e))
+  //     }
+  //     return res.json()
+  //   })
+  //   .then(head => {
+  //     console.log('head:', head)
+  //     this.context.setHead(head)
+  //   })
+  // }
 
   render() {
     const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.state

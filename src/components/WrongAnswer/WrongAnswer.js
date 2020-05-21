@@ -10,14 +10,14 @@ export default class WrongAnswer extends Component {
   }
 
   render () {
+    console.log('context:', this.context)
     // const original = this.context.[something]
     // const answer = this.context.[something]
     // const guess = this.context.[something]
     return (
       <>
       <div className='feedback-div'>
-        <h2>OOPS!</h2>
-        <h3>Not Quite</h3>
+        <h2>OOPS! Not quite.</h2>
 
         <p>The correct translation for {'original'} was {'answer'}, and you chose {'guess'}.</p>
 

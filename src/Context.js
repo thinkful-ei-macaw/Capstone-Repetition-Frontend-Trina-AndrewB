@@ -36,8 +36,7 @@ export class ContextProvider extends Component {
             words: items.words,
             language: items.language
           })
-        })
-    
+        })   
       }
 
     setWords = words => {
@@ -46,6 +45,10 @@ export class ContextProvider extends Component {
 
     setLanguage = language => {
         this.setState({ language: language })
+    }
+
+    setHead = head => {
+      this.setState({ head: head })
     }
 
     render() {

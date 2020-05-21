@@ -35,8 +35,7 @@ class LearningRoute extends Component {
       return res.json()
     })
     .then(head => {
-      console.log(head)
-      this.setState(head)
+      console.log('head:', head)
     })
   }
 
@@ -50,13 +49,20 @@ class LearningRoute extends Component {
           <form>
             <fieldset>
               <legend>
-                <label for="learn-guess-input" >What's the translation for this word?</label>
+                <label htmlFor="learn-guess-input" >What's the translation for this word?</label>
                 <input type="text" id="learn-guess-input" name="learn-guess-input" placeholder="Enter translated word here" required/>
                 <button type='submit'>Submit your answer</button>
 
               </legend>
             </fieldset>
           </form>
+
+          {/* for dev use only, remove before deployment!!! */}
+          <div className='for-dev-only'>
+            <a href='/correct'>RigthAnswer</a>
+            <a href='/incorrect'>WrongAnswer</a>
+          </div>
+
           <footer>
             <section className="answered">
               <p className="correct">Your total score is: {totalScore}</p><br/>

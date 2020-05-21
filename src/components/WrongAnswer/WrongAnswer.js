@@ -14,6 +14,7 @@ export default class WrongAnswer extends Component {
     // const original = this.context.[something]
     // const answer = this.context.[something]
     // const guess = this.context.[something]
+    const score = this.context.head.totalScore
     return (
       <>
       <div className='feedback-div'>
@@ -28,7 +29,7 @@ export default class WrongAnswer extends Component {
 
 
       <footer>
-      <p className="correct">Your total score is: {'totalScore'}</p>
+        <p className="correct">Your total score is: {score}</p>
       </footer>
       </> 
     )

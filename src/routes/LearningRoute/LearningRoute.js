@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 import Context from '../../Context'
 import './LearningRoute.css'
+import config from '../../config'
 //import config from '../../config'
-//import TokenService from '../../services/token-service'
+import TokenService from '../../services/token-service'
 
 
 class LearningRoute extends Component {
@@ -14,11 +15,33 @@ class LearningRoute extends Component {
     nextWord: "",
     wordCorrectCount: 0,
     wordIncorrectCount: 0,
-    totalScore: 0
+    totalScore: 0,
+    guess: ''
   }
 
-  handleSubmitBtn = e => {
+  handleSubmitGuess = (e) => {
+    e.preventDefault();
+    const guess = this.state.guess
+    return fetch (`${config.API_ENDPOINT}/language/guess`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`
+      },
+      body:JSON.stringify(guess)
+    })
+    .then(res => 
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+      )
+  }
 
+  //stores user intput value to the state
+  onEnterGuess = e => {
+    this.setState({
+      guess: e.target.value
+    })
   }
 
   // *** Moved fetch into context... is it needed here? **** 
@@ -43,19 +66,19 @@ class LearningRoute extends Component {
   // }
 
   render() {
-    const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.state
+    const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.context.head
+    console.log(this.state.guess)
     return (
       <div className="LearningPage">
         <main>
           <h2>Translate the word:</h2>
           <span className="nextword">{nextWord}</span>
-          <form>
+          <form onSubmit={e => this.handleSubmitGuess(e)}>
             <fieldset>
               <legend>
                 <label htmlFor="learn-guess-input" >What's the translation for this word?</label>
-                <input type="text" id="learn-guess-input" name="learn-guess-input" placeholder="Enter translated word here" required/>
+                <input type="text" id="learn-guess-input" name="learn-guess-input" placeholder="Enter translated word here" onChange={this.onEnterGuess.bind(this)} required/>
                 <button type='submit'>Submit your answer</button>
-
               </legend>
             </fieldset>
           </form>

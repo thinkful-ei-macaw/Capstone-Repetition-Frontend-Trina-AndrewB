@@ -75,11 +75,9 @@ class LearningRoute extends Component {
           <span className="nextword">{nextWord}</span>
           <form onSubmit={e => this.handleSubmitGuess(e)}>
             <fieldset>
-              <legend>
                 <label htmlFor="learn-guess-input" >What's the translation for this word?</label>
                 <input type="text" id="learn-guess-input" name="learn-guess-input" placeholder="Enter translated word here" onChange={this.onEnterGuess.bind(this)} required/>
-                <button type='submit'>Submit your answer</button>
-              </legend>
+                <button type='submit'>Submit your answer</button>             
             </fieldset>
           </form>
 

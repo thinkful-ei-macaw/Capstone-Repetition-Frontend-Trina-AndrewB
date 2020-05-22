@@ -17,10 +17,11 @@ legend {
 
 label {
     position: relative;
-    bottom: 25px;
+    bottom: 40px;
     margin-top: 15px;
-    width: 0px;
+    width: auto;
     font-size: 15px;
+    left: 246px
 }
 
 input {

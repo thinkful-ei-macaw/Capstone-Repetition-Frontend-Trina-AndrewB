@@ -8,6 +8,7 @@ export default class RightAnswer extends Component {
 
     handleClick = () => {
       this.props.history.push('/learn')
+      //this.context.setHead()
     }
 
   render () {

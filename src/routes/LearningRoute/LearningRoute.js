@@ -20,7 +20,13 @@ class LearningRoute extends Component {
     
   }
 
-
+  verifyGuess = (isCorrect) => {
+    if (isCorrect) {
+      this.props.history.push('/correct')
+    } else {
+      this.props.history.push('/incorrect')
+    }
+  }
 
 
   handleSubmitGuess = (e) => {
@@ -40,6 +46,14 @@ class LearningRoute extends Component {
       ? res.json().then(e => Promise.reject(e))
       : res.json()
       )
+      .then(res => {
+        if (res.isCorrect) {
+          this.props.history.push('/correct')
+        } else {
+          this.props.history.push('/incorrect')
+        }
+        console.log('response', res)
+      })
   }
 
   //store user guess intput value to the state

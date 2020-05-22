@@ -5,8 +5,7 @@ export default class WrongAnswer extends Component {
   static contextType = Context
 
   handleClick = () => {
-    console.log('click handled')
-    //Link to the next word!
+    this.props.history.push('/learn')
   }
 
   render () {

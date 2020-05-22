@@ -12,12 +12,16 @@ class LearningRoute extends Component {
   static contextType = Context
 
   state = {
-    nextWord: "",
-    wordCorrectCount: 0,
-    wordIncorrectCount: 0,
-    totalScore: 0,
-    guess: ''
+    guess: '',
+    // nextWord: "",
+    // wordCorrectCount: 0,
+    // wordIncorrectCount: 0,
+    // totalScore: 0,
+    
   }
+
+
+
 
   handleSubmitGuess = (e) => {
     e.preventDefault();
@@ -29,7 +33,7 @@ class LearningRoute extends Component {
         'content-type': 'application/json',
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       },
-      body:JSON.stringify(guess)
+      body:JSON.stringify({ guess: guess })     
     })
     .then(res => 
       (!res.ok)
@@ -38,37 +42,16 @@ class LearningRoute extends Component {
       )
   }
 
-  //stores user intput value to the state
+  //store user guess intput value to the state
   onEnterGuess = e => {
     this.setState({
       guess: e.target.value
     })
   }
 
-  // *** Moved fetch into context... is it needed here? **** 
-
-  // componentDidMount() {
-  //   fetch(`${config.API_ENDPOINT}/language/head`, {
-  //     headers: {
-  //       "Content-Type": "application/json", 
-  //       "Authorization": `Bearer ${TokenService.getAuthToken()}`
-  //     },
-  //   })
-  //   .then(res => {
-  //     if (!res.ok) {
-  //       return res.json().then(e => Promise.reject(e))
-  //     }
-  //     return res.json()
-  //   })
-  //   .then(head => {
-  //     console.log('head:', head)
-  //     this.context.setHead(head)
-  //   })
-  // }
-
   render() {
     const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.context.head
-    //console.log(this.state.guess)
+    console.log('Context:',this.context)
     return (
       <div className="LearningPage">
         <main>

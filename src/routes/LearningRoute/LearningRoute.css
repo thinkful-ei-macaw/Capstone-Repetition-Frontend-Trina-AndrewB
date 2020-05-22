@@ -15,7 +15,7 @@ legend {
     margin: 0;
 }
 
-label {
+label[for="learn-guess-input"] {
     position: relative;
     bottom: 40px;
     margin-top: 15px;
@@ -26,6 +26,7 @@ label {
 
 input {
     margin: 0px 50px 0px 0px;
+    height: auto
 }
 
 button {

@@ -22,6 +22,7 @@ class LearningRoute extends Component {
   handleSubmitGuess = (e) => {
     e.preventDefault();
     const guess = this.state.guess
+    console.log(guess)
     return fetch (`${config.API_ENDPOINT}/language/guess`, {
       method: 'POST',
       headers: {
@@ -67,7 +68,7 @@ class LearningRoute extends Component {
 
   render() {
     const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.context.head
-    console.log(this.state.guess)
+    //console.log(this.state.guess)
     return (
       <div className="LearningPage">
         <main>
@@ -75,7 +76,7 @@ class LearningRoute extends Component {
           <span className="nextword">{nextWord}</span>
           <form onSubmit={e => this.handleSubmitGuess(e)}>
             <fieldset>
-                <label htmlFor="learn-guess-input" >What's the translation for this word?</label>
+                <label htmlFor="learn-guess-input" className='guess-label'>What's the translation for this word?</label>
                 <input type="text" id="learn-guess-input" name="learn-guess-input" placeholder="Enter translated word here" onChange={this.onEnterGuess.bind(this)} required/>
                 <button type='submit'>Submit your answer</button>             
             </fieldset>

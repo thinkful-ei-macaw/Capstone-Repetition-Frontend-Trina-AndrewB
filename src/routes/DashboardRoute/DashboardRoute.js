@@ -5,7 +5,7 @@ import Context from '../../Context'
 class DashboardRoute extends Component {
 
   static contextType = Context
- 
+
 
   handleClickButton = () => {
     this.props.history.push('/learn')
@@ -17,7 +17,7 @@ class DashboardRoute extends Component {
       <li key={index}>
         <h4>{word.original}</h4>
         <p>correct answer count: {word.correct_count}</p>
-        <p>incorrect answer count: {word.incorrect_count}</p>  
+        <p>incorrect answer count: {word.incorrect_count}</p>
       </li>
     )
     console.log('wordList:', wordsList)
@@ -32,17 +32,17 @@ class DashboardRoute extends Component {
     const lang = this.context.language;
     console.log(lang)
     return (
-        <div className="Dashboard">
-          <main>
+      <div className="Dashboard">
+        <main>
           <h2>{lang.name}</h2>
-            <section>
-              <a type='submit' href="/learn" className="practice">Start practicing</a>
-            </section>
-            <h3>Words to practice</h3>
-            <h3>Total correct answers: {lang.total_score}</h3>
-            {this.renderWordList()}
-          </main>
-        </div>
+          <section>
+            <a type='submit' href="/learn" className="practice">Start practicing</a>
+          </section>
+          <h3>Words to practice</h3>
+          <h3>Total correct answers: {lang.total_score}</h3>
+          {this.renderWordList()}
+        </main>
+      </div>
     );
   }
 }

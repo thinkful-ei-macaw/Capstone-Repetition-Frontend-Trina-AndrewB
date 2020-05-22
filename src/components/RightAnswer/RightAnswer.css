@@ -1,0 +1,12 @@
+.next-word-btn {
+  display: block;
+  background-color: #FD9404;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feedback-div {
+  display: inline-flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+}

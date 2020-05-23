@@ -13,7 +13,6 @@ class LearningRoute extends Component {
 
   state = {
     guess: '',
-    // nextWord: "",
     // wordCorrectCount: 0,
     // wordIncorrectCount: 0,
     // totalScore: 0,
@@ -62,6 +61,8 @@ class LearningRoute extends Component {
       guess: e.target.value
     })
   }
+
+  
 
   render() {
     const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.context.head

@@ -75,6 +75,8 @@ export class ContextProvider extends Component {
       this.setState({ head: head })
     }
 
+    
+
     render() {
         const value = {
             words: this.state.words,

@@ -42,11 +42,11 @@ export default class App extends Component {
               component={LearningRoute}
             />
             <PrivateRoute
-              path='/correct'
+              path={'/correct'}
               component={RightAnswer}
             />
              <PrivateRoute
-              path='/incorrect'
+              path={'/incorrect'}
               component={WrongAnswer}
             />
             <PublicOnlyRoute

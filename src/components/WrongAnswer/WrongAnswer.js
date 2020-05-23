@@ -4,7 +4,8 @@ import Context from '../../Context'
 export default class WrongAnswer extends Component {
   static contextType = Context
 
-  handleClick = () => {
+  handleClick = e => {
+    e.preventDefault();
     this.props.history.push('/learn')
   }
 

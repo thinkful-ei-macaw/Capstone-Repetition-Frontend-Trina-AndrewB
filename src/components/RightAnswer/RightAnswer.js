@@ -4,12 +4,18 @@ import './RightAnswer.css'
 
 export default class RightAnswer extends Component {
 
-    static contextType = Context 
+  static contextType = Context 
 
-    handleClick = () => {
-      this.props.history.push('/learn')
-      //this.context.setHead()
-    }
+  // getNextWordObj = (nextWord) => {
+  //   for (let obj in this.context.words) {
+
+  //   }
+  // }
+
+  handleClick = () => {
+    this.props.history.push('/learn')
+    //this.context.setHead()
+  }
 
   render () {
     console.log('context:', this.context)

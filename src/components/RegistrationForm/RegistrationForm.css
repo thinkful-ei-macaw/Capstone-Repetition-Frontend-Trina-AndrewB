@@ -43,7 +43,7 @@ button {
 }
 
 footer {
-  
+  position: relative;
   margin-left: auto;
   margin-right: auto;
 }
@@ -55,7 +55,7 @@ button {
   margin-right: auto;
 }
 
-footer a {
+form a {
   display: block;
   color:#FD9404;
   margin-left: auto;

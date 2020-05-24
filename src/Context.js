@@ -20,7 +20,7 @@ export class ContextProvider extends Component {
     }
 
     getWordsAndLanguage()  {
-      fetch(`${config.API_ENDPOINT}/language`, {
+      fetch(`${config.API_ENDPOINT}/api/language`, {
         headers: {
           "Content-Type": "application/json",
           'Authorization': `Bearer ${TokenService.getAuthToken()}`
@@ -41,7 +41,7 @@ export class ContextProvider extends Component {
     }
 
     getHead() {
-      fetch(`${config.API_ENDPOINT}/language/head`, {
+      fetch(`${config.API_ENDPOINT}/api/language/head`, {
         headers: {
           "Content-Type": "application/json", 
           "Authorization": `Bearer ${TokenService.getAuthToken()}`

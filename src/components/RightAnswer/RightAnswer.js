@@ -7,9 +7,9 @@ export default class RightAnswer extends Component {
 
   static contextType = Context
 
-  handleClick = () => {
-    this.props.history.push('/learn')
-  }
+    handleClick = () => {
+      this.props.history.push('/learn')
+    }
 
   render() {
     console.log('context:', this.context)

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Context from '../../Context'
+//import { Link } from 'react-router-dom'
 
 export default class WrongAnswer extends Component {
   static contextType = Context
 
-  handleClick = e => {
-    e.preventDefault();
-    this.props.history.push('/learn')
+  handleClick = () => {
+    this.props.history.push('/learn') 
   }
 
   render () {
@@ -22,9 +22,10 @@ export default class WrongAnswer extends Component {
 
         <p>The correct translation for {'original'} was {'answer'}, and you chose {'guess'}.</p>
 
-        <button className='next-word-btn' onClick={this.handleClick}>
-          Try another word
-        </button> 
+        <button className='next-word-btn' onClick={this.handleClick()}>
+              Try another word
+        </button>
+          
       </div>
 
 

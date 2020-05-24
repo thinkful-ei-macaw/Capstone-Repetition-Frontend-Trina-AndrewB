@@ -6,7 +6,6 @@ class DashboardRoute extends Component {
 
   static contextType = Context
 
-
   handleClickButton = () => {
     this.props.history.push('/learn')
   }
@@ -20,7 +19,6 @@ class DashboardRoute extends Component {
         <p>incorrect answer count: {word.incorrect_count}</p>
       </li>
     )
-    console.log('wordList:', wordsList)
     return (
       <div className="dashboard">
         <ul>{wordsList}</ul>
@@ -29,8 +27,8 @@ class DashboardRoute extends Component {
   }
 
   render() {
+    console.log('context:', this.context)
     const lang = this.context.language;
-    console.log(lang)
     return (
       <div className="Dashboard">
         <main>

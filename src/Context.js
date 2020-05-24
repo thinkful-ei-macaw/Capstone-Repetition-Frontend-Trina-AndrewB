@@ -84,7 +84,8 @@ export class ContextProvider extends Component {
             head: this.state.head,
             setWords: this.setWords,
             setLanguage: this.setLanguage,
-            setHead: this.setHead
+            getHead: this.getHead,
+            setHead: this.setHead,
         }
         
         return (

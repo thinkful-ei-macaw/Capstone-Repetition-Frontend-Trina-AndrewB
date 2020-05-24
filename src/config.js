@@ -6,3 +6,5 @@ export default {
 //http://localhost:8000
 //https://glacial-atoll-99069.herokuapp.com
 
+//other scripts:
+//"predeploy": "npm run build",

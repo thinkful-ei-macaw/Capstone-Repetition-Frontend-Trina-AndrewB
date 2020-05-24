@@ -21,7 +21,8 @@
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "deploy": "now ./build",
+    "predeploy": "npm run build",
+    "deploy": "vercel --prod",
     "postdeploy": "now alias -A ./build/now.json"
   },
   "eslintConfig": {

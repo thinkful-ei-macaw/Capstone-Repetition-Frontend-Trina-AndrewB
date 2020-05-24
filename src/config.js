@@ -8,4 +8,3 @@ export default {
 
 //scripts that give troubles
 //"prebuild": "CI=true react-scripts test --colors",
-//"predeploy": "npm run build",

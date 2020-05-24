@@ -24,46 +24,46 @@ export default class App extends Component {
   render() {
     const { hasError } = this.state
     return (
-      <ContextProvider>
-      <div className='App'>
-        <Header />
-        <main>
-          {hasError && (
-            <p>There was an error! Oh no!</p>
-          )}
-          <Switch>
-            <PrivateRoute
-              exact
-              path={'/'}
-              component={DashboardRoute}
-            />
-            <PrivateRoute
-              path={'/learn'}
-              component={LearningRoute}
-            />
-            <PrivateRoute
-              path={'/correct'}
-              component={RightAnswer}
-            />
-             <PrivateRoute
-              path={'/incorrect'}
-              component={WrongAnswer}
-            />
-            <PublicOnlyRoute
-              path={'/register'}
-              component={RegistrationRoute}
-            />
-            <PublicOnlyRoute
-              path={'/login'}
-              component={LoginRoute}
-            />
-            <Route
-              component={NotFoundRoute}
-            />
-          </Switch>
-        </main>
-      </div>
-      </ContextProvider>
+        <ContextProvider>
+          <div className='App'>
+            <Header />
+            <main>
+              {hasError && (
+                <p>There was an error! Oh no!</p>
+              )}
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path={'/'}
+                  component={DashboardRoute}
+                />
+                <PrivateRoute
+                  path={'/learn'}
+                  component={LearningRoute}
+                />
+                <PrivateRoute
+                  path={'/correct'}
+                  component={RightAnswer}
+                />
+                <PrivateRoute
+                  path={'/incorrect'}
+                  component={WrongAnswer}
+                />
+                <PublicOnlyRoute
+                  path={'/register'}
+                  component={RegistrationRoute}
+                />
+                <PublicOnlyRoute
+                  path={'/login'}
+                  component={LoginRoute}
+                />
+                <Route
+                  component={NotFoundRoute}
+                />
+              </Switch>
+            </main>
+          </div>
+        </ContextProvider> 
     );
   }
 }

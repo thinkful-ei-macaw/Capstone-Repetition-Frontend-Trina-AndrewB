@@ -6,5 +6,5 @@ export default {
 //http://localhost:8000
 //https://glacial-atoll-99069.herokuapp.com
 
-//scripts that give troubles
+//scripts that give troubles:
 //"prebuild": "CI=true react-scripts test --colors",

@@ -13,7 +13,8 @@ class LearningRoute extends Component {
 
   state = {
     guess: '',
-    response: {}
+    nextWord: '',
+    isCorrect: ''
   }
 
   verifyGuess = (isCorrect) => {
@@ -22,6 +23,7 @@ class LearningRoute extends Component {
     } else {
       this.props.history.push('/incorrect')
     }
+    console.log('verified')
   }
 
   handleSubmitGuess = (e) => {
@@ -42,12 +44,9 @@ class LearningRoute extends Component {
           : res.json()
       )
       .then(res => {
-        if (res.isCorrect) {
-          this.props.history.push('/correct')
-        } else {
-          this.props.history.push('/incorrect')
-        }
         console.log('response', res)
+        this.verifyGuess(res.isCorrect)
+        
       })
   }
 
@@ -84,7 +83,6 @@ class LearningRoute extends Component {
           </footer>
         </main>
       </div>
-
     );
   }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import Context from '../../Context'
 import './LearningRoute.css'
 import config from '../../config'
@@ -46,7 +45,7 @@ class LearningRoute extends Component {
       .then(res => {
         console.log('response', res)
         this.verifyGuess(res.isCorrect)
-        
+       
       })
   }
 

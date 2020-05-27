@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-
 import Context from '../../Context'
 import './LearningRoute.css'
 import config from '../../config'
 //import config from '../../config'
 import TokenService from '../../services/token-service'
-import RightAnswer from '../../components/RightAnswer/RightAnswer'
-import WrongAnswer from '../../components/WrongAnswer/WrongAnswer'
 
 
 class LearningRoute extends Component {
@@ -15,15 +12,17 @@ class LearningRoute extends Component {
 
   state = {
     guess: '',
-    response: {}
+    nextWord: '',
+    isCorrect: ''
   }
 
   verifyGuess = (isCorrect) => {
     if (isCorrect) {
-      return <RightAnswer />
+      this.props.history.push('/correct')
     } else {
-      return <WrongAnswer />
+      this.props.history.push('/incorrect')
     }
+    console.log('verified')
   }
 
   handleSubmitGuess = (e) => {
@@ -44,23 +43,27 @@ class LearningRoute extends Component {
           : res.json()
       )
       .then(res => {
+<<<<<<< HEAD
         this.context.setHead(res)
         this.verifyGuess(res)
         // console.log('response', res)
+=======
+        console.log('response', res)
+        this.verifyGuess(res.isCorrect)
+       
+>>>>>>> 56fc61e1f8a1f8610ba3b47a8e58d884423a075d
       })
   }
 
-  //store user guess input value to the state
+  //store user guess intput value to the state
   onEnterGuess = e => {
-    e.preventDefault();
     this.setState({
       guess: e.target.value
     })
   }
 
   render() {
-    const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore, isCorrect } = this.context.head
-    console.log(isCorrect)
+    const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.context.head
     return (
       <div className="LearningPage">
         <main>
@@ -73,7 +76,7 @@ class LearningRoute extends Component {
               <button type='submit'>Submit your answer</button>
             </fieldset>
           </form>
-          <div>{this.verifyGuess(isCorrect)}</div>
+
           <footer>
             <section className="answered">
               <p>You have answered this word <span>incorrectly</span> {wordIncorrectCount} times.</p><br />
@@ -85,7 +88,6 @@ class LearningRoute extends Component {
           </footer>
         </main>
       </div>
-
     );
   }
 }

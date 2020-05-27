@@ -6,10 +6,6 @@ class DashboardRoute extends Component {
 
   static contextType = Context
 
-  handleClickButton = () => {
-    this.props.history.push('/learn')
-  }
-
   renderWordList() {
     const words = this.context.words;
     const wordsList = words.map((word, index) =>
@@ -24,6 +20,10 @@ class DashboardRoute extends Component {
         <ul>{wordsList}</ul>
       </div>
     )
+  }  
+  
+  handleClickButton = () => {
+    this.props.history.push('/learn')
   }
 
   render() {

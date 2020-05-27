@@ -42,17 +42,13 @@ class LearningRoute extends Component {
           : res.json()
       )
       .then(res => {
-        if (res.isCorrect) {
-          this.props.history.push('/correct')
-        } else {
-          this.props.history.push('/incorrect')
-        }
-        console.log('response', res)
+        this.context.setHead(res)
       })
   }
 
   //store user guess intput value to the state
   onEnterGuess = e => {
+    e.preventDefault();
     this.setState({
       guess: e.target.value
     })

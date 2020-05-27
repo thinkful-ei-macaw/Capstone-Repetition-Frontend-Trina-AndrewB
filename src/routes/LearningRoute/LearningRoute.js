@@ -5,6 +5,8 @@ import './LearningRoute.css'
 import config from '../../config'
 //import config from '../../config'
 import TokenService from '../../services/token-service'
+import RightAnswer from '../../components/RightAnswer/RightAnswer'
+import WrongAnswer from '../../components/WrongAnswer/WrongAnswer'
 
 
 class LearningRoute extends Component {
@@ -18,9 +20,9 @@ class LearningRoute extends Component {
 
   verifyGuess = (isCorrect) => {
     if (isCorrect) {
-      this.props.history.push('/correct')
+      return <RightAnswer />
     } else {
-      this.props.history.push('/incorrect')
+      return <WrongAnswer />
     }
   }
 
@@ -43,10 +45,11 @@ class LearningRoute extends Component {
       )
       .then(res => {
         this.context.setHead(res)
+        // console.log('response', res)
       })
   }
 
-  //store user guess intput value to the state
+  //store user guess input value to the state
   onEnterGuess = e => {
     e.preventDefault();
     this.setState({
@@ -55,7 +58,8 @@ class LearningRoute extends Component {
   }
 
   render() {
-    const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore } = this.context.head
+    const { nextWord, wordCorrectCount, wordIncorrectCount, totalScore, isCorrect } = this.context.head
+    console.log(isCorrect)
     return (
       <div className="LearningPage">
         <main>
@@ -68,7 +72,7 @@ class LearningRoute extends Component {
               <button type='submit'>Submit your answer</button>
             </fieldset>
           </form>
-
+          <div>{this.verifyGuess(isCorrect)}</div>
           <footer>
             <section className="answered">
               <p>You have answered this word <span>incorrectly</span> {wordIncorrectCount} times.</p><br />

@@ -5,9 +5,9 @@ import Context from '../../Context'
 export default class WrongAnswer extends Component {
   static contextType = Context
 
-  // handleClick = () => {
-  //   this.props.history.push('/learn') 
-  // }
+  handleClick = () => {
+    this.props.history.push('/learn') 
+  }
 
   render () {
     console.log('context:', this.context)
@@ -22,7 +22,7 @@ export default class WrongAnswer extends Component {
 
         <p>The correct translation for {'original'} was {'answer'}, and you chose {'guess'}.</p>
 
-        <button className='next-word-btn' >
+        <button className='next-word-btn' onClick={this.handleClick}>
               Try another word
         </button>
           

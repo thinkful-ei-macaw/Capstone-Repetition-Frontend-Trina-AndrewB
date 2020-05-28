@@ -7,9 +7,9 @@ export default class RightAnswer extends Component {
 
   static contextType = Context
 
-    // handleClick = () => {
-    //   this.props.history.push('/learn')
-    // }
+    handleClick = () => {
+      this.props.history.push('/learn')
+    }
 
   render() {
     console.log('context:', this.context)
@@ -17,14 +17,15 @@ export default class RightAnswer extends Component {
     // const answer = this.context.[something]
     // const guess = this.context.[something]
     const score = this.context.head.totalScore
+    const answer = this.context.head.answer
     return (
       <>
         <div className='feedback-div'>
           <h2>That's Correct!</h2>
 
-          <p>The correct translation for {'original'} was {'answer'}, and you chose {'guess'}.</p>
+          <p>The correct translation for {"original"} was {answer}, and you chose {answer}!</p>
 
-            <button className='next-word-btn' >
+            <button className='next-word-btn' onClick={this.handleClick}>
               Try another word
             </button>
       

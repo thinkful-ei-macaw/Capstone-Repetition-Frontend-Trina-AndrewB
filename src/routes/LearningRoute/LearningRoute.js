@@ -43,15 +43,10 @@ class LearningRoute extends Component {
           : res.json()
       )
       .then(res => {
-<<<<<<< HEAD
         this.context.setHead(res)
-        this.verifyGuess(res)
+        // this.verifyGuess(res)
         // console.log('response', res)
-=======
-        console.log('response', res)
         this.verifyGuess(res.isCorrect)
-       
->>>>>>> 56fc61e1f8a1f8610ba3b47a8e58d884423a075d
       })
   }
 

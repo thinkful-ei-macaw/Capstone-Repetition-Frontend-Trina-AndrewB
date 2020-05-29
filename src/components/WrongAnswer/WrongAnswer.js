@@ -14,13 +14,14 @@ export default class WrongAnswer extends Component {
     // const original = this.context.[something]
     // const answer = this.context.[something]
     // const guess = this.context.[something]
-    const score = this.context.head.totalScore
+    const { totalScore, answer } = this.context.head
+    const { guess } = this.context
     return (
       <>
       <div className='feedback-div'>
         <h2>OOPS! Not quite.</h2>
 
-        <p>The correct translation for {'original'} was {'answer'}, and you chose {'guess'}.</p>
+        <p>The correct translation for {'original'} was {answer}, and you chose {guess}.</p>
 
         <button className='next-word-btn' onClick={this.handleClick}>
               Try another word
@@ -30,7 +31,7 @@ export default class WrongAnswer extends Component {
 
 
       <footer>
-        <p className="correct">Your total score is: {score}</p>
+        <p className="correct">Your total score is: {totalScore}</p>
       </footer>
       </> 
     )

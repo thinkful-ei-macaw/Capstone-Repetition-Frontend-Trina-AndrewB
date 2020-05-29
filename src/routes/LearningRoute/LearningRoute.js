@@ -29,7 +29,7 @@ class LearningRoute extends Component {
   handleSubmitGuess = (e) => {
     e.preventDefault();
     const guess = this.state.guess
-    const original = this.state.original
+    const original = this.state.nextWord
     console.log(original)
     return fetch(`${config.API_ENDPOINT}/api/language/guess`, {
       method: 'POST',
@@ -45,10 +45,9 @@ class LearningRoute extends Component {
           : res.json()
       )
       .then(res => {
-        console.log(res)
         this.context.setHead(res)
         this.context.setGuess(this.state.guess)
-        this.context.setOriginal(this.state.original)
+        this.context.setOriginal(this.state.nextWord)
         // this.verifyGuess(res)
         // console.log('response', res)
         this.verifyGuess(res.isCorrect)

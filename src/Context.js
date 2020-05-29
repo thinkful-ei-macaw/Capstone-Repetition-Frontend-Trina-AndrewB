@@ -16,7 +16,9 @@ export class ContextProvider extends Component {
         head: {},
         setWords: ()=>{},
         setLanguage: ()=>{},
-        setHead: ()=>{}
+        setHead: ()=>{},
+        setOriginal: ()=>{},
+        setGuess: ()=>{},
     }
 
     getWordsAndLanguage()  {
@@ -35,7 +37,7 @@ export class ContextProvider extends Component {
       .then(items => {
         this.setState({
           words: items.words,
-          language: items.language
+          language: items.language,
         })
       })
     }
@@ -75,6 +77,13 @@ export class ContextProvider extends Component {
       this.setState({ head: head })
     }
 
+    setOriginal = original => {
+      this.setState({ original: original })
+    }
+
+    setGuess = guess => {
+      this.setState({ guess: guess })
+    }
     
 
     render() {
@@ -86,6 +95,8 @@ export class ContextProvider extends Component {
             setLanguage: this.setLanguage,
             getHead: this.getHead,
             setHead: this.setHead,
+            setOriginal: this.setOriginal,
+            setGuess: this.setGuess
         }
         
         return (

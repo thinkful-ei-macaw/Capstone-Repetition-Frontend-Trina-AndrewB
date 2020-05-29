@@ -18,12 +18,14 @@ export default class RightAnswer extends Component {
     // const guess = this.context.[something]
     const score = this.context.head.totalScore
     const answer = this.context.head.answer
+    const guess = this.context.guess
+    console.log(guess)
     return (
       <>
         <div className='feedback-div'>
           <h2>That's Correct!</h2>
 
-          <p>The correct translation for {"original"} was {answer}, and you chose {answer}!</p>
+          <p>The correct translation for {"original"} was {answer}, and you chose {guess}!</p>
 
             <button className='next-word-btn' onClick={this.handleClick}>
               Try another word

@@ -13,7 +13,8 @@ class LearningRoute extends Component {
   state = {
     guess: '',
     nextWord: '',
-    isCorrect: ''
+    isCorrect: '',
+    original: ''
   }
 
   verifyGuess = (isCorrect) => {
@@ -28,7 +29,8 @@ class LearningRoute extends Component {
   handleSubmitGuess = (e) => {
     e.preventDefault();
     const guess = this.state.guess
-    console.log(guess)
+    const original = this.state.original
+    console.log(original)
     return fetch(`${config.API_ENDPOINT}/api/language/guess`, {
       method: 'POST',
       headers: {
@@ -43,14 +45,17 @@ class LearningRoute extends Component {
           : res.json()
       )
       .then(res => {
+        console.log(res)
         this.context.setHead(res)
+        this.context.setGuess(this.state.guess)
+        this.context.setOriginal(this.state.original)
         // this.verifyGuess(res)
         // console.log('response', res)
         this.verifyGuess(res.isCorrect)
       })
   }
 
-  //store user guess intput value to the state
+  //store user guess input value to the state
   onEnterGuess = e => {
     this.setState({
       guess: e.target.value

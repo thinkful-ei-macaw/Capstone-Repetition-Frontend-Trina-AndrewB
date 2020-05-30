@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Context from '../../Context'
 import './LearningRoute.css'
 import config from '../../config'
-//import config from '../../config'
 import TokenService from '../../services/token-service'
 
 
@@ -17,20 +16,19 @@ class LearningRoute extends Component {
     original: ''
   }
 
-  verifyGuess = (isCorrect) => {
-    if (isCorrect) {
-      this.props.history.push('/correct')
-    } else {
-      this.props.history.push('/incorrect')
-    }
-    console.log('verified')
-  }
+  // verifyGuess = (isCorrect) => {
+  //   if (isCorrect) {
+  //     this.props.history.push('/correct')
+  //   } else {
+  //     this.props.history.push('/incorrect')
+  //   }
+  //   console.log('verified')
+  // }
 
   handleSubmitGuess = (e) => {
     e.preventDefault();
     const guess = this.state.guess
-    const original = this.state.nextWord
-    console.log(original)
+    console.log(guess)
     return fetch(`${config.API_ENDPOINT}/api/language/guess`, {
       method: 'POST',
       headers: {
@@ -46,11 +44,11 @@ class LearningRoute extends Component {
       )
       .then(res => {
         this.context.setHead(res)
-        this.context.setGuess(this.state.guess)
+        this.context.setGuess(guess)
         this.context.setOriginal(this.state.nextWord)
         // this.verifyGuess(res)
         // console.log('response', res)
-        this.verifyGuess(res.isCorrect)
+        this.props.history.push('/answer')
       })
   }
 

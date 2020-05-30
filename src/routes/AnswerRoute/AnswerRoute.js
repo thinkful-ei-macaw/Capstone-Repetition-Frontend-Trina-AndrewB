@@ -1,32 +1,28 @@
 import React, { Component } from 'react'
 import Context from '../../Context'
-import './RightAnswer.css'
+import './AnswerRoute.css'
 //import { Link } from 'react-router-dom'
 
 export default class RightAnswer extends Component {
 
   static contextType = Context
 
-    handleClick = () => {
+    handleClick = e => {
+      e.preventDefault();
       this.props.history.push('/learn')
     }
 
   render() {
     console.log('context:', this.context)
-    // const original = this.context.[something]
-    // const answer = this.context.[something]
-    // const guess = this.context.[something]
-    const { totalScore, answer } = this.context.head
-    //const answer = this.context.head.answer
     const { guess } = this.context
-    const original = this.context.words.original
-    console.log(original)
+    const { isCorrect, totalScore, answer, nextWord } = this.context.head
+    console.log(isCorrect)
     return (
       <>
         <div className='feedback-div'>
-          <h2>That's Correct!</h2>
+          { isCorrect ? <h2>That's Correct!</h2> : <h2>OOPS! Not quite.</h2>}
 
-          <p>The correct translation for {original} was {answer}, and you chose {guess}!</p>
+          <p>The correct translation for {nextWord} was {answer}, and you chose {guess}!</p>
 
             <button className='next-word-btn' onClick={this.handleClick}>
               Try another word

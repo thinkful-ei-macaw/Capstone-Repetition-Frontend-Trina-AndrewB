@@ -10,8 +10,7 @@ import LearningRoute from '../../routes/LearningRoute/LearningRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
 import { ContextProvider } from '../../Context'
-import RightAnswer from '../RightAnswer/RightAnswer'
-import WrongAnswer from '../WrongAnswer/WrongAnswer'
+import AnswerRoute from '../../routes/AnswerRoute/AnswerRoute'
 
 export default class App extends Component {
   state = { hasError: false }
@@ -42,12 +41,8 @@ export default class App extends Component {
                   component={LearningRoute}
                 />
                 <PrivateRoute
-                  path={'/correct'}
-                  component={RightAnswer}
-                />
-                <PrivateRoute
-                  path={'/incorrect'}
-                  component={WrongAnswer}
+                  path={'/answer'}
+                  component={AnswerRoute}
                 />
                 <PublicOnlyRoute
                   path={'/register'}

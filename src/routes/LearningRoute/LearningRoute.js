@@ -45,7 +45,7 @@ class LearningRoute extends Component {
       .then(res => {
         this.context.setHead(res)
         this.context.setGuess(guess)
-        this.context.setOriginal(this.state.nextWord)
+        this.context.setOriginal(res.nextWord)
         // this.verifyGuess(res)
         // console.log('response', res)
         this.props.history.push('/answer')

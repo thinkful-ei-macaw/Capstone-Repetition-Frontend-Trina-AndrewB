@@ -4,7 +4,8 @@ import TokenService from './services/token-service'
 
 const WordContext = React.createContext({
     words: [], 
-    language: {}
+    language: {},
+    setOriginal: ()=>{},
 })
 
 export default WordContext
@@ -19,7 +20,6 @@ export class ContextProvider extends Component {
         setWords: ()=>{},
         setLanguage: ()=>{},
         setHead: ()=>{},
-        setOriginal: ()=>{},
         setGuess: ()=>{},
     }
 
@@ -80,7 +80,7 @@ export class ContextProvider extends Component {
     }
 
     setOriginal = original => {
-      this.setState({ original: original })
+      this.setState({ original })
     }
 
     setGuess = guess => {

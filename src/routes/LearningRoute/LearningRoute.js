@@ -16,18 +16,9 @@ class LearningRoute extends Component {
     original: ''
   }
 
-  // verifyGuess = (isCorrect) => {
-  //   if (isCorrect) {
-  //     this.props.history.push('/correct')
-  //   } else {
-  //     this.props.history.push('/incorrect')
-  //   }
-  //   console.log('verified')
-  // }
-
   handleSubmitGuess = (e) => {
     e.preventDefault();
-    const guess = this.state.guess
+    const guess = this.state.guess.toLowerCase();
     console.log(guess)
     return fetch(`${config.API_ENDPOINT}/api/language/guess`, {
       method: 'POST',
@@ -45,9 +36,10 @@ class LearningRoute extends Component {
       .then(res => {
         this.context.setHead(res)
         this.context.setGuess(guess)
-        this.context.setOriginal(res.nextWord)
+        this.context.setOriginal(this.context.head.original)
         // this.verifyGuess(res)
-        // console.log('response', res)
+        console.log('response', res)
+        console.log(this.context)
         this.props.history.push('/answer')
       })
   }

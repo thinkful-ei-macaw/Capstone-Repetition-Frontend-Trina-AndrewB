@@ -18,7 +18,7 @@ class LearningRoute extends Component {
 
   handleSubmitGuess = (e) => {
     e.preventDefault();
-    const guess = this.state.guess.toLowerCase();
+    const guess = this.state.guess.charAt(0).toUpperCase() + this.state.guess.toLowerCase().slice(1);
     console.log(guess)
     return fetch(`${config.API_ENDPOINT}/api/language/guess`, {
       method: 'POST',

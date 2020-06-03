@@ -16,41 +16,30 @@ legend {
 }
 
 label[for="learn-guess-input"] {
-    position: relative;
-    bottom: 40px;
-    margin-top: 15px;
+    display: block;
+    bottom: 50px;
+    margin-top: 25px;
     width: auto;
     font-size: 15px;
-    left: 246px
 }
 
-input {
-    margin: 0px 50px 0px 0px;
+input[for="learn-guess-input"] {
+    position: center;
+    margin: 25px 50px 0px 0px;
     height: auto
 }
 
 button {
-    display: inline;
+    display: block;
 }
 
 footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    height: 6.5rem;
+    display: block;
 }
 
-.answered {
-    float: left;
-    text-align: left;
-}
-
-.correct, .incorrect {
-    margin: 10px;
-}
-
-.score {
-    float: right;
-    text-align: right;
-    width: 25%;
+@media screen and (max-width: 800px) {
+    footer {
+        text-align: center;
+        padding: 5px;
+    }
 }

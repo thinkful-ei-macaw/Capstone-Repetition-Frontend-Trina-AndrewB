@@ -2,13 +2,17 @@
 
 body {
   text-align: center;
-  background-color: #700A97;
+  background-color: #3C0750;
   color:  #FD9404;
 }
 
 header {
-  background-color:  #FD9404;
+  background-color:  #fd9404;
   padding: 10px;
+}
+
+a {
+  color: #000080;
 }
 
 div {

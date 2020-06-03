@@ -67,13 +67,9 @@ class LearningRoute extends Component {
           </form>
 
           <footer>
-            <section className="answered">
-              <p>You have answered this word <span>incorrectly</span> {wordIncorrectCount} times.</p><br />
-              <p className="incorrect">You have answered this word <span>correctly</span> {wordCorrectCount} times.</p>
-            </section>
-            <section className="score">
-              <p className="correct">Your total score is: {totalScore}</p>
-            </section>
+            <p className="correct">You have answered this word incorrectly <span>{wordIncorrectCount}</span> times.</p>
+            <p className="incorrect">You have answered this word correctly <span>{wordCorrectCount}</span> times.</p>
+            <p className="score">Your total score is: {totalScore}</p>
           </footer>
         </main>
       </div>
